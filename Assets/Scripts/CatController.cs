@@ -5,8 +5,11 @@ namespace DefaultNamespace
 {
     public class CatController : MonoBehaviour
     {
-        [SerializeField]
-        private float speed;
+        [SerializeField] private float speed;
+        [SerializeField] private float rotationSpeed;
+        [SerializeField] private Vector2 angleSpan;
+        [SerializeField] private Animator standaAnimator;
+        
         private Rigidbody2D _rigidbody;
         
         private void Awake()
@@ -14,27 +17,33 @@ namespace DefaultNamespace
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             var hor = Input.GetAxis("Horizontal");
             var ver = Input.GetAxis("Vertical");
+            
+            // rotate first
 
-            if (Mathf.Approximately(hor, 0) && Mathf.Approximately(ver, 0))
-                return;
+            var angle = transform.eulerAngles.z + hor * rotationSpeed * -1 * Time.fixedDeltaTime;
+            if (angle > 180)
+                angle -= 360;
+            
+            angle = Mathf.Clamp(angle, angleSpan.x, angleSpan.y);
+            //_rigidbody.MoveRotation(angle);
+            _rigidbody.transform.rotation = Quaternion.Euler(0, 0, angle);
+            
+            // move second - evaluate speed based on rotation
 
-            var absHor = Mathf.Abs(hor);
+            var horizontalSpeedNorm = (1 - Mathf.InverseLerp(angleSpan.x, angleSpan.y, angle)) * 2 - 1;
+            var absHor = Mathf.Abs(horizontalSpeedNorm);
             var absVer = Mathf.Abs(ver);
 
-            float directionScale = 0;
+            float directionScale = Mathf.Max(absHor, absVer);
 
-            if (absHor > absVer)
-                directionScale = absHor * Mathf.Sign(hor);
-            else
-                directionScale = absVer * Mathf.Sign(ver);
-
-            directionScale = Mathf.Max(absHor, absVer);
+            _rigidbody.velocity = (Vector2.right * horizontalSpeedNorm + Vector2.up * ver).normalized * directionScale * speed;
+            //_rigidbody.MovePosition((Vector2) transform.position + (Vector2.right * horizontalSpeedNorm + Vector2.up * ver).normalized * directionScale * speed * Time.fixedDeltaTime);
             
-            _rigidbody.velocity = (Vector2.right * hor + Vector2.up * ver).normalized * directionScale * speed * Time.deltaTime;
+            standaAnimator.SetFloat("Lean", horizontalSpeedNorm);
         }
     }
 }

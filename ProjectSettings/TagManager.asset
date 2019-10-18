@@ -17,7 +17,7 @@ TagManager:
   - Destroyable
   - NonPlayerColliding
   - Player
-  - 
+  - PlayerBlock
   - 
   - 
   - 
@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2631112787
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Meteor
+    uniqueID: 2286545411
+    locked: 0
+  - name: Standa
+    uniqueID: 1123044507
+    locked: 0
+  - name: Foreground
+    uniqueID: 1620596535
     locked: 0

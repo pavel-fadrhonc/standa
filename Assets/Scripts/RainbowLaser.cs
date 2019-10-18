@@ -20,7 +20,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            _rainbowLineRenderer.SetPositions(_lineRendPos);
+            
         }
 
         public void SetEnabled(bool enabled)
@@ -41,6 +41,8 @@ namespace DefaultNamespace
         public void SetStartPos(Vector3 pos)
         {
             _lineRendPos[0] = pos;
+            
+            _rainbowLineRenderer.SetPositions(_lineRendPos);
         }
 
         public void SetEndPos(Vector3 endPos)
@@ -48,6 +50,8 @@ namespace DefaultNamespace
             _lineRendPos[1] = endPos;
             HitDebrisPS.transform.position = endPos;
             HitGlowPS.transform.position = endPos;
+            
+            _rainbowLineRenderer.SetPositions(_lineRendPos);
         }
     }
 }

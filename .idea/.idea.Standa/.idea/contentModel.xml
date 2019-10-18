@@ -7,13 +7,23 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="BarUpdater.cs" t="Include" />
           <e p="CatController.cs" t="Include" />
           <e p="Destroyable.cs" t="Include" />
           <e p="DestroyableCollector.cs" t="Include" />
+          <e p="DoDamageOnCollision.cs" t="Include" />
+          <e p="EnergyRegenerator.cs" t="Include" />
+          <e p="InitialSpeed.cs" t="Include" />
           <e p="MoveWithSpeed.cs" t="Include" />
           <e p="Rainbow.shader" t="Include" />
           <e p="RainbowLaser.cs" t="Include" />
           <e p="RainbowShooter.cs" t="Include" />
+          <e p="Standa.cs" t="Include" />
+          <e p="Stats" t="Include">
+            <e p="eStatType.cs" t="Include" />
+            <e p="FloatStat.cs" t="Include" />
+            <e p="HaveStats.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

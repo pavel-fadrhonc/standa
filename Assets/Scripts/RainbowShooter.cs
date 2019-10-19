@@ -18,6 +18,9 @@ namespace DefaultNamespace
         public Transform rainbowStart;
         public RainbowLaser rainbowLaser;
 
+        public event Action OnRainbowStartedShooting;
+        public event Action OnRainbowStoppedShooting;
+
         private FloatStat _energyStat;
         private EnergyRegenerator _energyRegenerator;
 
@@ -37,8 +40,11 @@ namespace DefaultNamespace
             var consumedEnergy = fireDown ? shootStartCost : shootingCostPerSec * Time.deltaTime;
 
             if (fireDown && _energyStat.Value > consumedEnergy)
+            {
                 _startedShooting = true;
-            
+                OnRainbowStartedShooting?.Invoke();
+            }
+
             if (fire && _energyStat.Value > 0 && _startedShooting)
             {
                 _energyStat.AddValue(-consumedEnergy);
@@ -66,6 +72,9 @@ namespace DefaultNamespace
             }
             else
             {
+                if (_startedShooting)
+                    OnRainbowStoppedShooting?.Invoke();
+                
                 _energyRegenerator.enabled = true;
                 _startedShooting = false;
                 rainbowLaser.SetEnabled(false);

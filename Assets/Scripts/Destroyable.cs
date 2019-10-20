@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
     [RequireComponent(typeof(HaveStats))]
+    [RequireComponent(typeof(AudioSource))]
     public class Destroyable : MonoBehaviour
     {
         public float exploadingPartsForce = 20f;
         public List<SpriteRenderer> cracks = new List<SpriteRenderer>();
-
+        public List<AudioClip> crackAudio = new List<AudioClip>();
+        public float crackVolume = 1;
+        
         public GameObject destroyPartsParent;
+        public UnityEvent Destroyed;
 
         private Rigidbody2D _rigidbody2D;
         
@@ -22,12 +27,11 @@ namespace DefaultNamespace
         private int _totalCracks;
 
         private FloatStat _healthStat;
+        private AudioSource _audioSource;
         
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
-            _healthStat = GetComponent<HaveStats>().GetFloatStat(eStatType.Health);
-            _healthStat.OnValueChanged += HealthStatOnOnValueChanged;
             
             cracks.ForEach(c=>c.gameObject.SetActive(false));
             _cracksEnabled = 0;
@@ -35,6 +39,13 @@ namespace DefaultNamespace
             
             destroyPartsParent.gameObject.SetActive(false);
             _destroyPartsRB = new List<Rigidbody2D>(destroyPartsParent.GetComponentsInChildren<Rigidbody2D>());
+            _audioSource = GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            _healthStat = GetComponent<HaveStats>().GetFloatStat(eStatType.Health);
+            _healthStat.OnValueChanged += HealthStatOnOnValueChanged;
         }
 
         private void HealthStatOnOnValueChanged(FloatStat stat, float oldVal, float newVal)
@@ -57,6 +68,10 @@ namespace DefaultNamespace
                 }
 
                 _cracksEnabled = shouldHaveCracks;
+
+                _audioSource.clip = crackAudio[_cracksEnabled-1];
+                _audioSource.volume = crackVolume;
+                _audioSource.Play();
             }            
         }
 
@@ -68,6 +83,7 @@ namespace DefaultNamespace
         private void Die()
         {
             destroyPartsParent.gameObject.SetActive(true);
+            Destroyed?.Invoke();
             
             foreach (var dp in _destroyPartsRB)
             {

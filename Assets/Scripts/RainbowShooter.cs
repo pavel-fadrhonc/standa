@@ -20,6 +20,8 @@ namespace DefaultNamespace
 
         public event Action OnRainbowStartedShooting;
         public event Action OnRainbowStoppedShooting;
+        
+        public bool HistLastFrame { get; private set; }
 
         private FloatStat _energyStat;
         private EnergyRegenerator _energyRegenerator;
@@ -28,8 +30,12 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            _energyStat = GetComponent<HaveStats>().GetFloatStat(eStatType.Energy);
             _energyRegenerator = GetComponent<EnergyRegenerator>();
+        }
+
+        private void Start()
+        {
+            _energyStat = GetComponent<HaveStats>().GetFloatStat(eStatType.Energy);
         }
 
         private void Update()
@@ -38,6 +44,7 @@ namespace DefaultNamespace
             bool fireDown = Input.GetButtonDown("Fire1");
 
             var consumedEnergy = fireDown ? shootStartCost : shootingCostPerSec * Time.deltaTime;
+            HistLastFrame = false;
 
             if (fireDown && _energyStat.Value > consumedEnergy)
             {
@@ -64,6 +71,7 @@ namespace DefaultNamespace
                     var destroyable = hit.collider.gameObject.GetComponent<Destroyable>();
                     destroyable.ApplyForce((hit.collider.transform.position - rainbowStart.position).normalized * shootForce);
                     destroyable.GetComponent<HaveStats>().GetFloatStat(eStatType.Health).AddValue(-damage);
+                    HistLastFrame = true;
                 }
                 else
                 {

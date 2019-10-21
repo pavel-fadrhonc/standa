@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -19,34 +20,46 @@ namespace DefaultNamespace
         [Header("Start Game")] 
         public Button startGameButton;
         
-        [Header("Game")]
-        public GameObject Standa;
+        [Header("Intro Anim")]
+        public List<GameObject> introAnimEnabledObjects = new List<GameObject>();
+        public PlayableDirector introSequenceDirector;
+
+        [Header("Game")] 
+        public GameObject standa;
         public AudioSource backGroundMusic;
         public List<GameObject> gameEnableObjects = new List<GameObject>();
-        
+
+        private Animator _standaAnimator;        
         private FloatStat _standaHealthStat;
 
         private void Awake()
         {
-            startGameButton.onClick.AddListener((() => ChangeGameState(eGameState.Game)));
-            
+            startGameButton.onClick.AddListener((() => ChangeGameState(eGameState.IntroAnim)));
+            introSequenceDirector.stopped += director => ChangeGameState(eGameState.Game);
+            introSequenceDirector.paused += director => ChangeGameState(eGameState.Game);
+            _standaAnimator = standa.GetComponentInChildren<Animator>();
         }
 
         public void ChangeGameState(eGameState gameState)
         {
             startGameButton.gameObject.SetActive(false);
-            Standa.gameObject.SetActive(false);
+            //Standa.gameObject.SetActive(false);
             gameEnableObjects.ForEach(g => g.SetActive(false));
+            introAnimEnabledObjects.ForEach(g => g.SetActive(false));
             
             switch (gameState)
             {
                 case eGameState.StartMenu:
                     startGameButton.gameObject.SetActive(true);
+                    _standaAnimator.SetTrigger("Intro");
+                    break;
+                case eGameState.IntroAnim:
+                    introAnimEnabledObjects.ForEach(g => g.SetActive(true));
                     break;
                 case eGameState.Game:
                     backGroundMusic.Play();
-                    Standa.gameObject.SetActive(true);
                     gameEnableObjects.ForEach(g => g.SetActive(true));
+                    _standaAnimator.SetTrigger("Riding");
                     break;
                 case eGameState.Death:
                     break;
@@ -59,7 +72,7 @@ namespace DefaultNamespace
         
         private void Start()
         {
-            _standaHealthStat = Standa.GetComponent<HaveStats>().GetFloatStat(eStatType.Health);
+            _standaHealthStat = standa.GetComponent<HaveStats>().GetFloatStat(eStatType.Health);
             _standaHealthStat.OnValueChanged += OnStandaHealthChanged;
             
             ChangeGameState(eGameState.StartMenu);

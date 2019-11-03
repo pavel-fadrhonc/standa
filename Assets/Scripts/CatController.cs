@@ -11,7 +11,7 @@ namespace DefaultNamespace
         [SerializeField] private Animator standaAnimator;
         
         private Rigidbody2D _rigidbody;
-        
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();

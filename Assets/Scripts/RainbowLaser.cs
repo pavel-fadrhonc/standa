@@ -16,6 +16,7 @@ namespace DefaultNamespace
         private void Awake()
         {
             _rainbowLineRenderer = GetComponentInChildren<LineRenderer>();
+            SetEnabled(false);
         }
 
         private void Update()

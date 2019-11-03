@@ -7,21 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
-        type: 3}
-      propertyPath: initialSpeedMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
-        type: 3}
-      propertyPath: randomRange.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
-        type: 3}
-      propertyPath: torque
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 516285353125631881, guid: d24a2333f63e0004ca43974c232b1cee,
         type: 3}
       propertyPath: m_Name
@@ -97,6 +82,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1550588508, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803038313, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 516285353125631885, guid: d24a2333f63e0004ca43974c232b1cee,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6671465527615826510, guid: d24a2333f63e0004ca43974c232b1cee,
         type: 3}
       propertyPath: exploadingPartsForce
@@ -105,11 +103,6 @@ PrefabInstance:
     - target: {fileID: 415547843, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
       propertyPath: speed
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 516285353125631885, guid: d24a2333f63e0004ca43974c232b1cee,
-        type: 3}
-      propertyPath: m_Mass
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3314614636145114522, guid: d24a2333f63e0004ca43974c232b1cee,
         type: 3}
@@ -126,43 +119,42 @@ PrefabInstance:
       propertyPath: speedForMaxDamage
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1605606962, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: damage
+    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
+        type: 3}
+      propertyPath: initialSpeedMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
+        type: 3}
+      propertyPath: randomRange.y
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 1605606962, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: speedForMaxDamage
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 145080773, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: damage
+    - target: {fileID: 4773020206422777224, guid: d24a2333f63e0004ca43974c232b1cee,
+        type: 3}
+      propertyPath: torque
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 145080773, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: speedForMaxDamage
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789811675, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789811675, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: speedForMaxDamage
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 716713028, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: damage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 716713028, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: speedForMaxDamage
-      value: 15
+    - target: {fileID: 1550588514, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: energyAmount
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1038105644, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
       propertyPath: damage
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1038105644, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: speedForMaxDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162882281, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605606962, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605606962, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
       propertyPath: speedForMaxDamage
       value: 15
       objectReference: {fileID: 0}
@@ -170,25 +162,41 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2020593796, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: m_Mass
-      value: 2
+    - target: {fileID: 1789811675, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789811675, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: speedForMaxDamage
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 818202716, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 145080773, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 145080773, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: speedForMaxDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2020593796, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 716713028, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 716713028, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
+      propertyPath: speedForMaxDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1657646529, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
       propertyPath: m_Mass
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1162882281, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550588514, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}
-      propertyPath: energyAmount
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24a2333f63e0004ca43974c232b1cee, type: 3}

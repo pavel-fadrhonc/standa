@@ -32,6 +32,13 @@ namespace DefaultNamespace
             _laser.OnRainbowStoppedShooting += OnRainbowStoppedShooting;
         }
 
+        public void Stop()
+        {
+            _audioSource.Stop();
+            if (_laserMidCoroutine != null)
+                StopCoroutine(_laserMidCoroutine);
+        }
+        
         private void Update()
         {
             _audioSource.volume = _laser.HistLastFrame ? HitVolume : NothitVolume;

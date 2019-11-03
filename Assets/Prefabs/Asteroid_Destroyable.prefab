@@ -18,11 +18,11 @@ GameObject:
   - component: {fileID: 53461154785664492}
   m_Layer: 0
   m_Name: EnergySpirit
-  m_TagString: Untagged
+  m_TagString: EnergySpirit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1550588512
 Transform:
   m_ObjectHideFlags: 0
@@ -4971,7 +4971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1803038314
 Transform:
   m_ObjectHideFlags: 0
@@ -5439,7 +5439,7 @@ GameObject:
   - component: {fileID: 1496526145}
   m_Layer: 9
   m_Name: Asteroid_Destroyable
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5753,7 +5753,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.56
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Meteor
+  - EnergySpirit
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1620596535
+    locked: 0
+  - name: UI
+    uniqueID: 2077183603
     locked: 0

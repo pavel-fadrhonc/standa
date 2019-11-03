@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Pavel\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Pavel\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Standa.-1487202035.00" t="ExcludeRecursive" />
-    <e p="D:\projects\Unity\Standa" t="IncludeRecursive">
+    <e p="C:\Users\oakus\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\oakus\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Standa.1531653961.00" t="ExcludeRecursive" />
+    <e p="F:\UnityProjs_local\Standa" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -31,6 +31,7 @@
           <e p="RainbowShooter.cs" t="Include" />
           <e p="ShakeBehaviour.cs" t="Include" />
           <e p="Standa.cs" t="Include" />
+          <e p="StartingGameState.cs" t="Include" />
           <e p="Stats" t="Include">
             <e p="eStatType.cs" t="Include" />
             <e p="FloatStat.cs" t="Include" />

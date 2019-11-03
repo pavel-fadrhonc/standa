@@ -69,6 +69,7 @@ namespace DefaultNamespace
 
                 _cracksEnabled = shouldHaveCracks;
 
+                _audioSource.Stop();
                 _audioSource.clip = crackAudio[_cracksEnabled-1];
                 _audioSource.volume = crackVolume;
                 _audioSource.Play();
@@ -80,17 +81,19 @@ namespace DefaultNamespace
             _rigidbody2D.AddForce(force);
         }
 
-        private void Die()
+        public void Die()
         {
             destroyPartsParent.gameObject.SetActive(true);
-            Destroyed?.Invoke();
-            
-            foreach (var dp in _destroyPartsRB)
+            if (_destroyPartsRB != null)
             {
-                dp.transform.SetParent(null);
-                dp.AddForce((dp.transform.position - transform.position).normalized * exploadingPartsForce, ForceMode2D.Impulse);
+                foreach (var dp in _destroyPartsRB)
+                {
+                    dp.transform.SetParent(null);
+                    dp.AddForce((dp.transform.position - transform.position).normalized * exploadingPartsForce, ForceMode2D.Impulse);
+                }
             }
-
+            
+            Destroyed?.Invoke();
             Destroy(gameObject);
         }
     }

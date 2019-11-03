@@ -28,6 +28,9 @@ namespace DefaultNamespace
 
         private void OnStatChanged(FloatStat stat, float oldValue, float newValue)
         {
+            if (!enabled || !gameObject.activeSelf)
+                return;
+            
             barImage.fillAmount = newValue / stat.MaxValue;
 
             if (newValue > oldValue)

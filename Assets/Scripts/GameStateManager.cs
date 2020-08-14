@@ -296,6 +296,8 @@ namespace DefaultNamespace
             var worldPoint = camera.ScreenToWorldPoint(new Vector3(Screen.width * standaPosNorm.x, Screen.height * standaPosNorm.y, 0));
             worldPoint.z = 0;
             var endPos = worldPoint;
+            var startRot = standa.transform.rotation;
+            var endRot = Quaternion.identity;
 
             var startTime = Time.time;
             var endTime = startTime + time;
@@ -306,6 +308,7 @@ namespace DefaultNamespace
                 var pos = Vector3.Lerp(startPos, endPos, progress);
                 pos.y += Mathf.Sin(progress * Mathf.PI);
                 standa.transform.position = pos;
+                standa.transform.rotation = Quaternion.Lerp(startRot, endRot, progress);
 
                 yield return null;
             }
